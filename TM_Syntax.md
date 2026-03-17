@@ -114,28 +114,46 @@ The `accept` and `reject` stanzas may specify one or more state identifiers:
 
 ## 11. Wildcard (`:`) Semantics
 
-The colon (`:`) acts as a **wildcard**.
+The colon (`:`) acts as a **wildcard**. Its behavior differs depending on whether it appears in a read or write position.
 
 ### 11.1 Wildcards in Read Positions
 
-When used in the read symbols of a transition, `:` matches **any symbol** on the corresponding tape.
+When used in the *read symbols* of a transition, `:` matches **any symbol** on the corresponding tape.
 
-#### Priority Rules
+### 11.2 Allowed Wildcard Patterns
 
-Transitions are selected in order of **specificity** (most specific to least specific):
+The syntax of a state transition **restricts which wildcard patterns are valid**. For a machine with *k* tapes, each transition line must conform to exactly one of these four forms:
 
-1. **No wildcards** — exact match required
-2. **One wildcard** — matches if no exact match exists
-3. **k−1 wildcards** — matches if exactly one symbol is concrete
-4. **All wildcards** — default match, lowest precedence
+1. **No wildcards**
+   All *k* read symbols are concrete. This is the most specific case.
+
+2. **Exactly one wildcard**
+   Exactly one read symbol is `:`, all others are concrete.
+
+3. **Exactly one concrete symbol**
+   Exactly one read symbol is concrete, all others are `:`.
+
+4. **All wildcards**
+   All *k* read symbols are `:`. This is the least specific case.
+
+Any transition that does not conform to one of these forms is **invalid**.
+
+### 11.3 Priority Rules
+
+When multiple transitions match a machine configuration, they are selected according to **specificity**, from most specific to least:
+
+1. No wildcards → exact match
+2. One wildcard → matches if no exact match exists
+3. One concrete symbol → matches if no higher-specificity match exists
+4. All wildcards → default match
 
 Within the same specificity level, transitions are evaluated **right to left** (later lines override earlier ones).
 
-### 11.2 Wildcards in Write Positions
+### 11.4 Wildcards in Write Positions
 
-When `:` appears as a write symbol, it **copies the corresponding read symbol** to the tape. This allows transitions to preserve tape contents without explicitly naming symbols.
+When `:` appears as a write symbol, it **copies the corresponding read symbol** to the tape.
 
-### 11.3 Missing Transitions
+### 11.5 Missing Transitions
 
 If no transition matches the current configuration, the machine halts in the **reject** condition.
 
