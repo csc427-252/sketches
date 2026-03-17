@@ -2,6 +2,15 @@
 # Turing Machine Simulator Language Specification
 
 
+<pre>
+Burton Rosenberg
+University of Miami
+17 march 2026
+
+Copyright 2026 (c) Burton Rosenberg. All rights reserved.
+</pre>
+
+
 ## 1. Overview
 
 The simulator operates on a Turing machine object that encapsulates its rules, states, and alphabets, and provides methods to execute and display a computation. To simplify program creation, a parser constructs this object from a textual description written in the syntax defined below.
