@@ -147,7 +147,7 @@ When multiple transitions match a machine configuration, they are selected accor
 3. One concrete symbol → matches if no higher-specificity match exists
 4. All wildcards → default match
 
-Within the same specificity level, transitions are evaluated **right to left** (later lines override earlier ones).
+Within the same specificity level, transitions are evaluated **right to left** stopping at the first match.
 
 ### 11.4 Wildcards in Write Positions
 
