@@ -12,12 +12,10 @@ Copyright 2026 (c) Burton Rosenberg. All rights reserved.
 
 
 ### 1. Overview
----
 
 The simulator operates on a Turing machine object that encapsulates its rules, states, and alphabets, and provides methods to execute and display a computation. To simplify program creation, a parser constructs this object from a textual description written in the syntax defined below.
 
 ### 2. Grammar
----
 
 A machine description file consists of a sequence of **stanzas**. Each stanza begins with a **header line** that starts in the first column. The first word of the header line is a **keyword** identifying the type of stanza.
 
