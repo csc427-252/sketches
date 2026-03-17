@@ -2,11 +2,15 @@
 # Turing Machine Simulator Language Specification
 
 
-## 0. Overview
+## 1. Overview
 
 The simulator operates on a Turing machine object that encapsulates its rules, states, and alphabets, and provides methods to execute and display a computation. To simplify program creation, a parser constructs this object from a textual description written in the syntax defined below.
 
-## 1. Grammar
+## 2. Grammar
+
+A machine description file consists of a sequence of **stanzas**. Each stanza begins with a **header line** that starts in the first column. The first word of the header line is a **keyword** identifying the type of stanza.
+
+A stanza may be followed by one or more **continuation lines**, each of which must be indented. These continuation lines provide additional data associated with the stanza.
 
 <pre>
   M -> (Stanza)(\n Stanza)*
@@ -23,11 +27,6 @@ The simulator operates on a Turing machine object that encapsulates its rules, s
   Ident -> a nonempty string of alphanumerics
 </pre>
 
-## 2. File Structure
-
-A machine description file consists of a sequence of **stanzas**. Each stanza begins with a **header line** that starts in the first column. The first word of the header line is a **keyword** identifying the type of stanza.
-
-A stanza may be followed by one or more **continuation lines**, each of which must be indented. These continuation lines provide additional data associated with the stanza.
 
 ## 3. Comments and Lexical Notes
 
