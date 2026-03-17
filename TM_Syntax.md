@@ -2,7 +2,11 @@
 # Turing Machine Simulator Language Specification
 
 
-## 0. Grammar
+## 0. Overview
+
+The simulator operates on a Turing machine object that encapsulates its rules, states, and alphabets, and provides methods to execute and display a computation. To simplify program creation, a parser constructs this object from a textual description written in the syntax defined below.
+
+## 1. Grammar
 
 <pre>
   M -> (Stanza)(\n Stanza)*
@@ -18,10 +22,6 @@
   Action -> the characters l, r and n or uppercase L, R and N.
   Ident -> a nonempty string of alphanumerics
 </pre>
-
-## 1. Overview
-
-The simulator operates on a Turing machine object that encapsulates its rules, states, and alphabets, and provides methods to execute and display a computation. To simplify program creation, a parser constructs this object from a textual description written in the syntax defined below.
 
 ## 2. File Structure
 
